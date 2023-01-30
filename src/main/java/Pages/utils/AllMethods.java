@@ -27,10 +27,10 @@ public class AllMethods {
 		PageFactory.initElements(driver, this);
 	}
 
-	public Boolean verifyTitle(String title, int time) {
+	public Boolean verifyTitle(WebElement title, int time) {
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		try {
-			wait.until(ExpectedConditions.titleContains(title));
+			wait.until(ExpectedConditions.visibilityOf(title));
 			return true;
 		} catch (Exception e) {
 			return false;

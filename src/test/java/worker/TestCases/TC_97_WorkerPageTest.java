@@ -15,7 +15,7 @@ import Pages.base.BasePage;
 import Pages.utils.TestUtils;
 import Pages.utils.Utilities;
 import login.Pages.LoginPage;
-import workers.pages.WorkerBasePage;
+import workers.pages.workers;
 import workers.pages.WorkersPages;
 
 public class TC_97_WorkerPageTest extends BasePage{
@@ -23,7 +23,7 @@ public class TC_97_WorkerPageTest extends BasePage{
 	LoginPage loginPage;
 	WorkersPages worker;
 	TestUtils utils;
-	WorkerBasePage workerBasePage;
+	workers workerBasePage;
 	Utilities utilize;
 	
 	
@@ -39,7 +39,7 @@ public class TC_97_WorkerPageTest extends BasePage{
 		loginPage = new LoginPage();
 		worker = new WorkersPages();
 		utils = new TestUtils();
-		workerBasePage = new WorkerBasePage();
+		workerBasePage = new workers();
 		utilize = new Utilities();
 	}
 	

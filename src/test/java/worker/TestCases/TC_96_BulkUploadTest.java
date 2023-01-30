@@ -13,7 +13,7 @@ import Pages.utils.TestUtils;
 import Pages.utils.Utilities;
 import login.Pages.LoginPage;
 import workers.pages.BulkUpload;
-import workers.pages.WorkerBasePage;
+import workers.pages.workers;
 
 public class TC_96_BulkUploadTest extends BasePage{
 
@@ -24,7 +24,7 @@ public class TC_96_BulkUploadTest extends BasePage{
 	LoginPage loginPage;
 	BulkUpload bulkUpload;
 	TestUtils utils;
-	WorkerBasePage workerBasePage;
+	workers workerBasePage;
 	Utilities utilize;
 	
 	public int DataSet = -1;
@@ -36,7 +36,7 @@ public class TC_96_BulkUploadTest extends BasePage{
 		bulkUpload = new BulkUpload();
 		utils = new TestUtils();
 		utilize = new Utilities();
-		workerBasePage = new WorkerBasePage();
+		workerBasePage = new workers();
 	}
 	
 	@Test

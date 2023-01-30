@@ -4,7 +4,7 @@
 
 	<test name="workerTest">
 		<classes>
-			<class name="worker.TestCases.TC_86_FilterTest"></class>
+			<class name="login.TestCases.testLogin"></class>
 			<class name="worker.TestCases.TC_87_SearchTest"></class>
 			<class name="worker.TestCases.TC_97_WorkerPageTest"></class>
 			<class name="worker.TestCases.TC_93_DeactivateWorkerPageTest"></class>

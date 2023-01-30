@@ -1,10 +1,10 @@
-package worker.TestCases;
+package login.TestCases;
 
 import java.awt.AWTException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
-import Pages.Testrail.testrail;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -14,19 +14,17 @@ import Pages.base.BasePage;
 import Pages.utils.TestUtils;
 import Pages.utils.Utilities;
 import login.Pages.LoginPage;
-import workers.pages.Filter;
-import workers.pages.WorkerBasePage;
+import AddingNewRequests.Officers;
 
-public class TC_86_FilterTest extends BasePage{
+public class testLogin extends BasePage{
 
-	public TC_86_FilterTest() throws IOException {
+	public testLogin() throws IOException {
 		super();
 	}
 	
 	LoginPage loginPage;
 	TestUtils utilswrite;
-	Filter filter;
-	WorkerBasePage workerBasePage;
+	Officers officersObj;
 	Utilities utilize;
 	
 
@@ -35,34 +33,35 @@ public class TC_86_FilterTest extends BasePage{
 		
 		loginPage = new LoginPage();
 		utilswrite = new TestUtils();
-		filter = new Filter();
-		workerBasePage = new WorkerBasePage();
+		officersObj = new Officers();
 		utilize = new Utilities();
 	}
 	
 	@DataProvider
 	public Object[][] getExcelData() throws IOException, InvalidFormatException{
-		Object data[][] = TestUtils.dataSupplier("Filters", System.getProperty("user.dir")+"\\"+prop.getProperty("Environment")+prop.getProperty("WorkerFilePath"));
+		Object data[][] = TestUtils.dataSupplier("officers", System.getProperty("user.dir")+"\\"+prop.getProperty("Environment")+prop.getProperty("OfficersFilePath"));
 		return data;
 	}
 
+	//@testrail(id = "16647,16935")
 	@Test(dataProvider="getExcelData")
-	@testrail(id = "16647,16935")
-	public void FilterTesting(Map<String,String> map) throws InterruptedException, IOException, AWTException {
+	public void OfficerTesting(Map<String,String> map) throws InterruptedException, IOException, AWTException, SQLException, ClassNotFoundException {
 
 
-		test = extent.createTest("Workers -- Filters");
-		test.assignCategory("Workers");
+		test = extent.createTest("Officers");
+		test.assignCategory("Officers");
 
-		loginPage.dashboardLink();
-		workerBasePage.WorkersModule();
+		driver.get("http://10.10.2.106:6006/RetirmentRequest/Basic");
+		officersObj.insertOfficerRequestData(map);
+
+		/*
 		filter.Status(map.get("Status"));
 		filter.WorkerType(map.get("WorkerType"));
 		filter.assignedDevice(map.get("AssignedDevice"));
 		filter.Site(map.get("AllowedSite"));
 		filter.Availability(map.get("Availability"));
 		filter.Download();
-
+		*/
 	}
 
 }

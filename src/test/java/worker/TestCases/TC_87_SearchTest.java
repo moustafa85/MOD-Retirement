@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import Pages.base.BasePage;
 import Pages.utils.TestUtils;
 import login.Pages.LoginPage;
-import workers.pages.WorkerBasePage;
+import workers.pages.workers;
 
 public class TC_87_SearchTest extends BasePage{
 
@@ -22,7 +22,7 @@ public class TC_87_SearchTest extends BasePage{
 	}
 	
 	LoginPage loginPage;
-	WorkerBasePage workerBasePage;
+	workers workerBasePage;
 	
 	public int DataSet = -1;
 	
@@ -30,7 +30,7 @@ public class TC_87_SearchTest extends BasePage{
 	public void setUp() throws IOException, InterruptedException {
 		
 		loginPage = new LoginPage();
-		workerBasePage = new WorkerBasePage();
+		workerBasePage = new workers();
 	}
 	
 	@DataProvider

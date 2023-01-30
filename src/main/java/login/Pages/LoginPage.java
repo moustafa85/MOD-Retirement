@@ -16,13 +16,13 @@ import Pages.base.BasePage;
 public class LoginPage extends BasePage {
 	AllMethods allMethods;
 	//Page Factory
-	@FindBy(id="basic_username")
+	@FindBy(name="nationalId")
 	WebElement username;
 	
-	@FindBy(id="basic_password")
+	@FindBy(name="password")
 	WebElement password;
 	
-	@FindBy(xpath="//body/div[@id='root']/div[1]/div[2]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/button[1]")
+	@FindBy(xpath="//button[@type='submit']")
 	WebElement login;
 	
 	//Initializing the Page Objects
@@ -31,12 +31,12 @@ public class LoginPage extends BasePage {
 		PageFactory.initElements(driver, this);
 		allMethods = new AllMethods(driver);
 	}
-	@FindBy(linkText = "Dashboard")
-	WebElement Dashboard;
+	@FindBy(xpath = "//ul[@id='simple-bar']/div/div[2]/div/div/div/li[4]/a/span")
+	WebElement newRequest;
 
 	public Boolean dashboardLink() {
-		if(allMethods.VerifyElementDisplay(Dashboard)){
-			Dashboard.click();
+		if(allMethods.VerifyElementDisplay(newRequest)){
+			newRequest.click();
 			driver.navigate().refresh();
 			return driver.getCurrentUrl().contains("dashboard");
 		}
@@ -83,7 +83,7 @@ public class LoginPage extends BasePage {
 		allMethods.VerifyElementDisplay(login);
 		login.click();
 
-		return allMethods.verifyTitle("Dashboard",2000);
+		return allMethods.verifyTitle(newRequest,2000);
 
 	}
 

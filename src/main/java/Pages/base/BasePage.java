@@ -56,7 +56,7 @@ public class BasePage {
 	public BasePage() throws IOException {
 		TestRailHelper = new TestRailHelper();
 		prop = new Properties();
-		FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"\\fours.Configuration\\Configuration");
+		FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"\\Properties\\Configuration");
 		prop.load(ip);
 	}
 

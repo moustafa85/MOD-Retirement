@@ -12,14 +12,14 @@ import org.testng.annotations.Test;
 import Pages.base.BasePage;
 import Pages.utils.TestUtils;
 import login.Pages.LoginPage;
-import workers.pages.WorkerBasePage;
+import workers.pages.workers;
 import workers.pages.WorkerPagination;
 
 public class TC_94_WorkerPaginationTest extends BasePage{
 	
 	LoginPage loginPage;
 	WorkerPagination wrkPagination;
-	WorkerBasePage workerBasePage;
+	workers workerBasePage;
 
 	public TC_94_WorkerPaginationTest() throws IOException {
 		super();
@@ -30,7 +30,7 @@ public class TC_94_WorkerPaginationTest extends BasePage{
 		
 		loginPage = new LoginPage();
 		wrkPagination = new WorkerPagination();
-		workerBasePage = new WorkerBasePage();
+		workerBasePage = new workers();
 	}
 	
 	@DataProvider

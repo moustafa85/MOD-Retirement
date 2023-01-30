@@ -14,14 +14,14 @@ import Pages.utils.TestUtils;
 import Pages.utils.Utilities;
 import login.Pages.LoginPage;
 import workers.pages.ActivateWorkerPage;
-import workers.pages.WorkerBasePage;
+import workers.pages.workers;
 
 public class TC_92_ActivateWorkerPageTest extends BasePage{
 	
 	LoginPage loginPage;
 	ActivateWorkerPage activateWorker;
 	TestUtils utils;
-	WorkerBasePage workerBasePage;
+	workers workerBasePage;
 	Utilities utilize;
 	
 	public int DataSet = -1;
@@ -36,7 +36,7 @@ public class TC_92_ActivateWorkerPageTest extends BasePage{
 		loginPage = new LoginPage();
 		activateWorker = new ActivateWorkerPage();
 		utils = new TestUtils();
-		workerBasePage = new WorkerBasePage();
+		workerBasePage = new workers();
 		utilize = new Utilities();
 	}
 	

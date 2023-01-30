@@ -14,7 +14,7 @@ import Pages.base.BasePage;
 import Pages.utils.TestUtils;
 import Pages.utils.Utilities;
 import login.Pages.LoginPage;
-import workers.pages.WorkerBasePage;
+import workers.pages.workers;
 
 public class TC_91_DeleteWorker extends BasePage{
 
@@ -24,7 +24,7 @@ public class TC_91_DeleteWorker extends BasePage{
 	
 	LoginPage loginPage;
 	TestUtils utils;
-	WorkerBasePage workerBasePage;
+	workers workerBasePage;
 	Utilities utilize;
 	
 	
@@ -34,7 +34,7 @@ public class TC_91_DeleteWorker extends BasePage{
 		
 		loginPage = new LoginPage();
 		utils = new TestUtils();
-		workerBasePage = new WorkerBasePage();
+		workerBasePage = new workers();
 		utilize = new Utilities();
 	}
 	

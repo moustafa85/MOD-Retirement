@@ -37,7 +37,7 @@ public class TestRailHelper {
 
     public TestRailHelper() throws IOException {
         prop = new Properties();
-        FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"\\fours.Configuration\\Configuration");
+        FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"\\Properties\\Configuration");
         prop.load(ip);
         TEST_RUN_ID = prop.getProperty("TEST_RAIL_RUN_ID");
         TEST_PROJECT_ID = prop.getProperty("TEST_PROJECT_ID");

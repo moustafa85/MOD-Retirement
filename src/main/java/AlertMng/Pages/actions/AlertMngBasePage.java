@@ -79,8 +79,6 @@ AllMethods allMethods;
 		allMethods.VerifyElementDisplay(alertMngBasePage.assign);
 		alertMngBasePage.assign.click();
 	}
-	
-
 
 	
 	public void OpenAlert() throws InterruptedException {

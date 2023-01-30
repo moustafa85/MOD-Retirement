@@ -15,14 +15,14 @@ import Pages.utils.TestUtils;
 import Pages.utils.Utilities;
 import login.Pages.LoginPage;
 import workers.pages.AssignSitePage;
-import workers.pages.WorkerBasePage;
+import workers.pages.workers;
 
 public class TC_89_AssignSitePageTest extends BasePage{
 	
 	LoginPage loginPage;
 	AssignSitePage assignSite;
 	TestUtils utils;
-	WorkerBasePage workerBasePage;
+	workers workerBasePage;
 	Utilities utilize;
 	
 	public int DataSet = -1;
@@ -37,7 +37,7 @@ public class TC_89_AssignSitePageTest extends BasePage{
 		loginPage = new LoginPage();
 		assignSite = new AssignSitePage();
 		utils = new TestUtils();
-		workerBasePage = new WorkerBasePage();
+		workerBasePage = new workers();
 		utilize = new Utilities();
 	}
 	

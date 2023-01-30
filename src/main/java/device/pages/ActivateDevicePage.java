@@ -8,12 +8,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import Pages.base.BasePage;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class ActivateDevicePage extends BasePage{
 AllMethods allMethods;
 	public ActivateDevicePage() throws IOException {
 		super();
 		PageFactory.initElements(driver, this);
+
 		allMethods = new AllMethods(driver);
 	}
 	

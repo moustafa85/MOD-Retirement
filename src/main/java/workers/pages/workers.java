@@ -12,10 +12,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import Pages.base.BasePage;
 
-public class WorkerBasePage extends BasePage {
+public class workers extends BasePage {
 	AllMethods allMethods;
 
-	public WorkerBasePage() throws IOException {
+	public workers() throws IOException {
 		super();
 		PageFactory.initElements(driver, this);
 		allMethods = new AllMethods(driver);
