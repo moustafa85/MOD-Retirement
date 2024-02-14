@@ -3,9 +3,11 @@ package Pages.utils;
 import java.io.*;
 import java.util.*;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 //import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 //import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -57,10 +59,7 @@ public class TestUtils {
 		}
 		return Data;
 	}
-	
-	
-	
-	
+
 	@Test
 	public void WriteInExcel(String status, int DR, String sheetName, String ColName, String FileName) throws IOException
 	{
@@ -112,7 +111,7 @@ public class TestUtils {
 		
 	}
 	
-	public void ExcelWrite(String status,int rownum, int colnum, String sheetName, String FileName) throws IOException
+	public static void ExcelWrite(String setValue,int rownum, int colnum, String sheetName, String FileName) throws IOException
 	{
 		File file = new File(FileName);
 		FileInputStream fls = new FileInputStream(file);
@@ -120,14 +119,13 @@ public class TestUtils {
     	XSSFSheet sheet=wb.getSheet(sheetName);
     	XSSFRow row = sheet.getRow(rownum);
     	
-		row.createCell(colnum).setCellValue(status);
+		row.createCell(colnum).setCellValue(setValue);
 		
 		FileOutputStream fout=new FileOutputStream(file);
 		
 		wb.write(fout);
 		fout.close();
 	}
-
 
 	public static Object[][] dataSupplier(String sheetName, String FileName ) throws IOException {
 		String key = "";
@@ -170,6 +168,24 @@ public class TestUtils {
 		return  obj;
 	}
 
-
-
+	public static int searchInExcel(String filePath, String sheetName, String searchTerm) throws IOException {
+		File file = new File(filePath);
+		FileInputStream inputStream = new FileInputStream(file);
+		XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+		Sheet sheet = workbook.getSheet(sheetName);
+		int rowNum = -1;
+		for (Row row : sheet) {
+			for (Cell cell : row) {
+				//if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC && cell.getStringCellValue().equals(searchTerm)) {
+				if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC && cell.getNumericCellValue()==Double.parseDouble(searchTerm)) {
+					rowNum = row.getRowNum();
+					break;
+				}
+			}
+			if (rowNum != -1) {
+				break;
+			}
+		}
+		return rowNum;
+	}
 }

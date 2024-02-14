@@ -28,8 +28,8 @@ public class ExtentManager {
         reporter = new ExtentSparkReporter(reportPath+"/"+time+"index.html");
         extent = new ExtentReports();
         reporter.config().setTheme(Theme.DARK);
-        reporter.config().setDocumentTitle("Automation Report");
-        reporter.config().setReportName("4S-Extent Report");
+        reporter.config().setDocumentTitle("QA Automation Report");
+        reporter.config().setReportName("MOD - Retirement ");
         extent.attachReporter(reporter);
         //Set environment details
         extent.setSystemInfo(System.getProperty("os.name"), System.getProperty("os.version"));

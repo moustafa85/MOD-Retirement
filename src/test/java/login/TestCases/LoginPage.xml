@@ -1,13 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="RegresionTesting">
+<suite name="RegresionTesting" parallel="methods" thread-count="3">
 	<parameter name="browser" value="chrome"></parameter>
+	<parameter name = "userName" value="12342"/>
+	<parameter name = "password" value="123456"/>
 	<listeners>
 		<listener class-name="Pages.utils.TestListener" />
 	</listeners>
-	<test name="Login Test">
+
+
+	<test name="Generate-Requests" enabled="true">
 		<classes>
-			<class name="login.TestCases.testLogin"></class>
+			<class name="login.TestCases.generateRequestsTest">
+				<methods><include name="generateTest"></include></methods>
+			</class>
 		</classes>
 	</test>
+	<test name="Fill-Details" enabled="true">
+		<classes>
+			<class name="login.TestCases.FillDetailsTest">
+				<methods><include name="prepareDetailsTest"></include></methods>
+			</class>
+		</classes>
+	</test>
+	<test name="Submit-Advanced-Request" enabled="false">
+		<classes>
+			<class name="login.TestCases.FillDetailsTest">
+				<methods><include name="submitRequestTest"></include></methods>
+			</class>
+		</classes>
+	</test>
+	<test name="Add-Templates-Validator" enabled="false">
+		<classes>
+			<class name="login.TestCases.FillDetailsTest">
+				<methods><include name="prepareTemplate"></include></methods>
+			</class>
+		</classes>
+	</test>
+	<test name="Validator-Submit " enabled="false">
+		<classes>
+			<class name="login.TestCases.FillDetailsTest">
+				<methods><include name="validatorSubmit"></include></methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Supervisor-Submit " enabled="false">
+		<classes>
+			<class name="login.TestCases.FillDetailsTest">
+				<methods><include name="supervisorSubmit"></include></methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Fill Vacation Sheet " enabled="false">
+		<classes>
+			<class name="login.TestCases.FillDetailsTest">
+				<methods><include name="setVacationsValues"></include></methods>
+			</class>
+		</classes>
+	</test>
+
+
 </suite>

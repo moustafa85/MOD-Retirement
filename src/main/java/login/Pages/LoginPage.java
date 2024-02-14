@@ -83,7 +83,7 @@ public class LoginPage extends BasePage {
 		allMethods.VerifyElementDisplay(login);
 		login.click();
 
-		return allMethods.verifyTitle(newRequest,2000);
+		return allMethods.verifyTitle(newRequest,1000);
 
 	}
 

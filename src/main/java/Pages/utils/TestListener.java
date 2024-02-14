@@ -7,6 +7,8 @@ import org.testng.ITestResult;
 
 import static Pages.base.BasePage.driver;
 import static Pages.base.BasePage.test;
+
+
 import static Pages.utils.ExtentManager.reportPath;
 
 
@@ -28,9 +30,12 @@ public class TestListener implements ITestListener {
     }
 
     public void onTestSuccess(ITestResult result) {
+
         String TestName = result.getName();
         results = "Passed";
-        test.pass(TestName);
+        if(test!=null)
+            test.pass(TestName);
+
 
     }
 

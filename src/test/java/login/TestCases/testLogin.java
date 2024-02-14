@@ -39,7 +39,7 @@ public class testLogin extends BasePage{
 	
 	@DataProvider
 	public Object[][] getExcelData() throws IOException, InvalidFormatException{
-		Object data[][] = TestUtils.dataSupplier("officers", System.getProperty("user.dir")+"\\"+prop.getProperty("Environment")+prop.getProperty("OfficersFilePath"));
+		Object data[][] = TestUtils.dataSupplier("Officer-Cases2023", System.getProperty("user.dir")+"\\QA\\"+prop.getProperty("OfficersFilePath"));
 		return data;
 	}
 
@@ -47,21 +47,12 @@ public class testLogin extends BasePage{
 	@Test(dataProvider="getExcelData")
 	public void OfficerTesting(Map<String,String> map) throws InterruptedException, IOException, AWTException, SQLException, ClassNotFoundException {
 
-
+		driver.navigate().refresh();
 		test = extent.createTest("Officers");
 		test.assignCategory("Officers");
-
-		driver.get("http://10.10.2.106:6006/RetirmentRequest/Basic");
+		driver.get(prop.getProperty("Origin")+"/RetirmentRequest/Basic");
 		officersObj.insertOfficerRequestData(map);
 
-		/*
-		filter.Status(map.get("Status"));
-		filter.WorkerType(map.get("WorkerType"));
-		filter.assignedDevice(map.get("AssignedDevice"));
-		filter.Site(map.get("AllowedSite"));
-		filter.Availability(map.get("Availability"));
-		filter.Download();
-		*/
 	}
 
 }

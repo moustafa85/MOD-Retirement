@@ -13,7 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import login.Pages.LoginPage;
 import logout.Pages.LogoutPage;
 import org.apache.commons.collections4.map.HashedMap;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -112,15 +112,16 @@ public class BasePage {
 
 		}else {
 			loginPage = new LoginPage();
-			loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+
+			//
+			if (ctx.getSuite().getParameter("userName")!=null)
+				loginPage.login(ctx.getSuite().getParameter("userName"),ctx.getSuite().getParameter("password"));
+			else
+				loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 		}
-
-
-
 	}
-
 	@BeforeMethod
-	public void beforeTes(ITestContext ctx, Method method) throws NoSuchMethodException
+	public void beforeTest(ITestContext ctx, Method method) throws NoSuchMethodException
 	{	//ctx.getName();
 		if(prop.getProperty("TestRailEnabled").equalsIgnoreCase("true")) {
 			if (method.isAnnotationPresent(testrail.class))
@@ -131,7 +132,6 @@ public class BasePage {
 		}
 		driver.navigate().refresh();
 	}
-
 	@AfterMethod(alwaysRun = true)
 	public void afterTest(ITestResult result, ITestContext ctx) throws IOException, APIException
 	{
@@ -176,11 +176,59 @@ public class BasePage {
 		}
 
 	}
+	public void setRestrictedFieldID(WebElement element , String val)
+	{
+		JavascriptExecutor jst= (JavascriptExecutor) driver;
+		jst.executeScript("arguments[0].click();", element);
+		jst.executeScript("arguments[1].value = arguments[0]; ", val, element);
+
+	}
+
+	public void setSelectVal(WebElement element , String val)
+	{
+		element.click();
+		element.sendKeys(val);
+		element.sendKeys(Keys.ARROW_DOWN);
+		element.sendKeys(Keys.ENTER);
+	}
+
+	public void setSelectbyVal(WebElement element,String val) throws InterruptedException {
+		element.sendKeys(val);
+		//element.click();
+		element.sendKeys(Keys.ARROW_DOWN);
+		element.sendKeys(Keys.ENTER);
+	}
+
+	public void scrollPage(WebElement element)
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,250)", element);
+	}
+	public void scrollHigh()
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	}
+	public void newScroll(WebElement input)
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", input);
+	}
+
+	public void clickBTN(WebElement input)
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", input);
+	}
+
+
+
 	public static WebDriver getBrowser(String browserName) {
 		switch (browserName) {
 			case "chrome":
 				//get the browser Version from properties file
-				WebDriverManager.chromedriver().browserVersion(prop.getProperty("chromeBrowserVersion")).setup();
+				//Option 1: WebDriverManager.chromedriver().browserVersion(prop.getProperty("chromeBrowserVersion")).setup();
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+prop.getProperty("chromeDriverPath"));
 				//define and initialise chrome option
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("start-maximized");
